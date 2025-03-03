@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### own ###
+date4u.log
