@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 @Component
 public class FileSystem {
 
-    public enum FileSystemPath {
+    public static enum FileSystemPath {
         ROOT,
         IMAGES,
         THUMBNAILS;

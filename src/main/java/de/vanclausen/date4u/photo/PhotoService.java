@@ -6,21 +6,41 @@ import org.springframework.stereotype.Service;
 
 import java.io.UncheckedIOException;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class PhotoService {
     private final FileSystem fileSystem;
+    private final AwtBicubicThumbnail thumbnail;
 
     @Autowired
-    public PhotoService(FileSystem fileSystem) {
+    public PhotoService(FileSystem fileSystem, AwtBicubicThumbnail thumbnail) {
         this.fileSystem = fileSystem;
+        this.thumbnail = thumbnail;
     }
 
     public Optional<byte[]> download(String name) {
+        return download(name, FileSystem.FileSystemPath.ROOT);
+    }
+
+    public Optional<byte[]> download(String name, FileSystem.FileSystemPath fileSystemPath) {
         try {
-            return Optional.of(fileSystem.load(name + ".jpg"));
+            return Optional.of(fileSystem.load(name + ".jpg", fileSystemPath));
         } catch (UncheckedIOException e) {
             return Optional.empty();
         }
+    }
+
+    public String upload(byte[] imageBytes) {
+        String imageName = UUID.randomUUID().toString();
+
+        // store original image
+        fileSystem.store(imageName + ".jpg", imageBytes, FileSystem.FileSystemPath.IMAGES);
+
+        // store thumbnail
+        byte[] thumbnailBytes = thumbnail.thumbnail(imageBytes);
+        fileSystem.store(imageName + ".jpg", thumbnailBytes, FileSystem.FileSystemPath.THUMBNAILS);
+
+        return imageName;
     }
 }
