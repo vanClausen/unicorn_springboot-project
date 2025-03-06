@@ -39,7 +39,7 @@ public class PhotoService {
 
         // store thumbnail
         byte[] thumbnailBytes = thumbnail.thumbnail(imageBytes);
-        fileSystem.store(imageName + ".jpg", thumbnailBytes, FileSystem.FileSystemPath.THUMBNAILS);
+        fileSystem.store(imageName + "-thumb.jpg", thumbnailBytes, FileSystem.FileSystemPath.THUMBNAILS);
 
         return imageName;
     }
