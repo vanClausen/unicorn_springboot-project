@@ -11,18 +11,22 @@ import org.springframework.shell.jline.PromptProvider;
 public class PromptProviderConfig implements PromptProvider {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
+    private final boolean isAdmin;
 
-    private static final PromptProvider userPromptProvider = () -> new AttributedString(
+    private final PromptProvider userPromptProvider = () -> new AttributedString(
             "date4u:>", AttributedStyle.DEFAULT.foreground(AttributedStyle.GREEN)
     );
-    private static final PromptProvider adminPromptProvider = () -> new AttributedString(
+    private final PromptProvider adminPromptProvider = () -> new AttributedString(
             "date4u:admin>", AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW)
     );
 
+    public PromptProviderConfig() {
+        isAdmin = (Math.random() > 0.5);
+        log.info("User is admin: {}", isAdmin);
+    }
+
     @Override
     public AttributedString getPrompt() {
-        boolean isAdmin = (Math.round(Math.random()) == 1);
-        log.info("isAdmin: {}", isAdmin);
         return isAdmin ? adminPromptProvider.getPrompt() : userPromptProvider.getPrompt();
     }
 }
