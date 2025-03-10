@@ -1,7 +1,9 @@
 package de.vanclausen.date4u.photo;
 
 import de.vanclausen.date4u.FileSystem;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.UncheckedIOException;
@@ -11,10 +13,10 @@ import java.util.UUID;
 @Service
 public class PhotoService {
     private final FileSystem fileSystem;
-    private final AwtBicubicThumbnail thumbnail;
+    private final Thumbnail thumbnail;
 
     @Autowired
-    public PhotoService(FileSystem fileSystem, AwtBicubicThumbnail thumbnail) {
+    public PhotoService(FileSystem fileSystem, @Qualifier("QualityThumbnail") Thumbnail thumbnail) {
         this.fileSystem = fileSystem;
         this.thumbnail = thumbnail;
     }
