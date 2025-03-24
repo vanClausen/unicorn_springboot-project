@@ -1,7 +1,6 @@
 package de.vanclausen.date4u.photo;
 
 import de.vanclausen.date4u.FileSystem;
-import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

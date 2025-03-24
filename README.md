@@ -9,7 +9,7 @@
 - Maven
 - application.properties
 - Spring Boot Configuration with ApplicationContext and ConfigurableApplicationContext
-- Annotations (Component, Configuration, Service, Autowired, Bean, Shell[...])
+- Annotations (Component, Configuration, Service, Autowired, Bean, Shell[...], Qualifier, Primary, Order, Lazy)
 - Spring Shell
 - DI / IoC
 
