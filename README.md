@@ -9,10 +9,12 @@
 - Maven
 - application.properties
 - Spring Boot Configuration with ApplicationContext and ConfigurableApplicationContext
-- Annotations (Component, Configuration, Service, Autowired, Bean, Shell[...], Qualifier, Primary, Order, Lazy, PreDestroy, PostConstruct, Value, ConfigurationProperties)
+- Annotations (Component, Configuration, Service, Autowired, Bean, Shell[...], Qualifier, Primary, Order, Lazy, 
+PreDestroy, PostConstruct, Value, ConfigurationProperties, EventListener, Async)
 - Spring Shell
 - DI / IoC
-- Konfiguration / Environment / Properties
+- Konfiguration / Environment / Properties / Profiles
+- Spring Events (Publisher / Listener / GenericEvents)
 
 ---
 ## Features
