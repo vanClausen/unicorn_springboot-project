@@ -4,10 +4,17 @@ import de.vanclausen.date4u.FileSystem;
 import de.vanclausen.date4u.configuration.Date4uProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.convert.ApplicationConversionService;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.core.env.Environment;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import org.springframework.stereotype.Component;
 import org.springframework.util.unit.DataSize;
+
+import java.nio.file.Path;
 
 @ShellComponent
 public class FsCommands {
@@ -39,5 +46,20 @@ public class FsCommands {
     @ShellMethod("Print user home directory")
     public String userHome() {
         return env.getProperty("user.home");
+    }
+
+    @ShellMethod("Display if a path exists")
+    public boolean exists (Path path) {
+        System.out.println(path);
+        return true;
+    }
+}
+
+@Component
+class StringToPathConverter implements Converter<String, Path> {
+
+    @Override
+    public Path convert(String source) {
+        return Path.of(source);
     }
 }

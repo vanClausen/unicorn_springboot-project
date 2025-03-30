@@ -15,6 +15,8 @@ PreDestroy, PostConstruct, Value, ConfigurationProperties, EventListener, Async)
 - DI / IoC
 - Konfiguration / Environment / Properties / Profiles
 - Spring Events (Publisher / Listener / GenericEvents)
+- Resource
+- ConversionService / Converter
 
 ---
 ## Features
