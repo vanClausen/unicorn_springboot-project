@@ -1,4 +1,4 @@
-package de.vanclausen.date4u;
+package de.vanclausen.date4u.core;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

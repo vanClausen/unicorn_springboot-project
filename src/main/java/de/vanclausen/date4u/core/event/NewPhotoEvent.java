@@ -1,4 +1,4 @@
-package de.vanclausen.date4u.event;
+package de.vanclausen.date4u.core.event;
 
 import java.time.OffsetDateTime;
 

@@ -1,6 +1,6 @@
-package de.vanclausen.date4u;
+package de.vanclausen.date4u.core;
 
-import de.vanclausen.date4u.event.NewPhotoEvent;
+import de.vanclausen.date4u.core.event.NewPhotoEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.event.EventListener;

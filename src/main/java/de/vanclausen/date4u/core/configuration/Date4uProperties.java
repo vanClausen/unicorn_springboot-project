@@ -1,4 +1,4 @@
-package de.vanclausen.date4u.configuration;
+package de.vanclausen.date4u.core.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

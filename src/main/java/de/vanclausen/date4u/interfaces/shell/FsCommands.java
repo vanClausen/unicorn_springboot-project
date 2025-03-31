@@ -1,13 +1,9 @@
-package de.vanclausen.date4u.shell;
+package de.vanclausen.date4u.interfaces.shell;
 
-import de.vanclausen.date4u.FileSystem;
-import de.vanclausen.date4u.configuration.Date4uProperties;
+import de.vanclausen.date4u.core.FileSystem;
+import de.vanclausen.date4u.core.configuration.Date4uProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.convert.ApplicationConversionService;
-import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.core.env.Environment;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;

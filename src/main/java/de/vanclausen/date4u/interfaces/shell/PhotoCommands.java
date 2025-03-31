@@ -1,7 +1,7 @@
-package de.vanclausen.date4u.shell;
+package de.vanclausen.date4u.interfaces.shell;
 
-import de.vanclausen.date4u.FileSystem;
-import de.vanclausen.date4u.photo.PhotoService;
+import de.vanclausen.date4u.core.FileSystem;
+import de.vanclausen.date4u.core.photo.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;

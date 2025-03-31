@@ -1,4 +1,4 @@
-package de.vanclausen.date4u.photo;
+package de.vanclausen.date4u.core.photo;
 
 import org.springframework.stereotype.Service;
 
@@ -7,8 +7,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
-@Service("FastThumbnail")
-public class AwtNearestNeighbourThumbnail implements Thumbnail {
+@Service("QualityThumbnail")
+public class AwtBicubicThumbnail implements Thumbnail {
     private static BufferedImage create(BufferedImage source, int width, int height) {
         double thumbRatio = (double) width / (double) height;
         double imgRatio = (double) source.getWidth() / (double) source.getHeight();
@@ -20,7 +20,7 @@ public class AwtNearestNeighbourThumbnail implements Thumbnail {
         BufferedImage thumb = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
         Graphics2D g2d = thumb.createGraphics();
-        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
         g2d.drawImage(source, 0, 0, width, height, null);
         g2d.dispose();
         return thumb;
@@ -37,3 +37,5 @@ public class AwtNearestNeighbourThumbnail implements Thumbnail {
         }
     }
 }
+
+

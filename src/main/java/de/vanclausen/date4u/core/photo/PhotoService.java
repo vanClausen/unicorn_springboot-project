@@ -1,14 +1,11 @@
-package de.vanclausen.date4u.photo;
+package de.vanclausen.date4u.core.photo;
 
-import de.vanclausen.date4u.FileSystem;
-import de.vanclausen.date4u.event.NewPhotoEvent;
+import de.vanclausen.date4u.core.FileSystem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.io.UncheckedIOException;
-import java.time.OffsetDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
