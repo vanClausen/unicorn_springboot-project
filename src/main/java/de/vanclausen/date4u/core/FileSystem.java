@@ -58,7 +58,8 @@ public class FileSystem {
     public byte[] load(String filename, FileSystemPath fileSystemPath) {
         Path path = pathSupplier.getOrDefault(fileSystemPath, () -> root).get();
         try {
-            return Files.readAllBytes(path.resolve(filename));
+            Path filePath = resolvePath(filename, path);
+            return Files.readAllBytes(filePath);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
@@ -71,9 +72,17 @@ public class FileSystem {
     public void store(String filename, byte[] data, FileSystemPath fileSystemPath) {
         Path path = pathSupplier.getOrDefault(fileSystemPath, () -> root).get();
         try {
-            Files.write(path.resolve(filename), data);
+            Files.write(resolvePath(filename, path), data);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+    }
+
+    private Path resolvePath(String filename, Path path) {
+        Path filePath = path.resolve(filename).toAbsolutePath().normalize();
+        if (!filePath.startsWith(root)) {
+            throw new SecurityException("Access denied to " + filePath);
+        }
+        return filePath;
     }
 }
