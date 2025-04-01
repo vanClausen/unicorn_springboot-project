@@ -10,13 +10,16 @@
 - application.properties
 - Spring Boot Configuration with ApplicationContext and ConfigurableApplicationContext
 - Annotations (Component, Configuration, Service, Autowired, Bean, Shell[...], Qualifier, Primary, Order, Lazy, 
-PreDestroy, PostConstruct, Value, ConfigurationProperties, EventListener, Async)
+PreDestroy, PostConstruct, Value, ConfigurationProperties, EventListener, Async, NonNull, NonNullApi, NonNullFields,
+Nullable, Test)
 - Spring Shell
 - DI / IoC
 - Konfiguration / Environment / Properties / Profiles
 - Spring Events (Publisher / Listener / GenericEvents)
 - Resource
 - ConversionService / Converter
+- TestDrivenDevelopment
+- JUnit, AssertJ, Mockito (@Test, @ExtendWith, @Mock, @BeforeEach, @Spy, @InjectMocks, @SpringBootTest, @TestPropertySource, @MockitoBean, @MockitoSpyBean)
 
 ---
 ## Features
