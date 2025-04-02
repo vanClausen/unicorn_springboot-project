@@ -1,8 +1,11 @@
 package de.vanclausen.date4u.core.photo;
 
 import de.vanclausen.date4u.core.FileSystem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.io.UncheckedIOException;
@@ -14,6 +17,7 @@ public class PhotoService {
     private final FileSystem fileSystem;
     private final Thumbnail thumbnail;
 //    private final ApplicationEventPublisher publisher;
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     public PhotoService(FileSystem fileSystem, @Qualifier("QualityThumbnail") Thumbnail thumbnail/*, ApplicationEventPublisher publisher*/) {
@@ -22,12 +26,12 @@ public class PhotoService {
 //        this.publisher = publisher;
     }
 
-    public Optional<byte[]> download(String name) {
-        return download(name, FileSystem.FileSystemPath.ROOT);
-    }
-
+    @Cacheable(cacheNames="date4u.filesystem.load",
+            key="#name",
+            unless="#result == null")
     public Optional<byte[]> download(String name, FileSystem.FileSystemPath fileSystemPath) {
         try {
+            log.info("Load image {}", name);
             return Optional.of(fileSystem.load(name + ".jpg", fileSystemPath));
         } catch (UncheckedIOException e) {
             return Optional.empty();
