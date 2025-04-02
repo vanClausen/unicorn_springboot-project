@@ -26,7 +26,7 @@ public class PhotoService {
 //        this.publisher = publisher;
     }
 
-    @Cacheable(cacheNames="date4u.filesystem.load",
+    @Cacheable(cacheNames="date4u.filesystem.file",
             key="#name",
             unless="#result == null")
     public Optional<byte[]> download(String name, FileSystem.FileSystemPath fileSystemPath) {
@@ -36,6 +36,13 @@ public class PhotoService {
         } catch (UncheckedIOException e) {
             return Optional.empty();
         }
+    }
+
+    @Cacheable(cacheNames="date4u.filesystem.file",
+            key="#photo.name",
+            unless="#result == null")
+    public Optional<byte[]> download(Photo photo, FileSystem.FileSystemPath fileSystemPath) {
+        return download(photo.getName(), fileSystemPath);
     }
 
     public String upload(byte[] imageBytes) {
