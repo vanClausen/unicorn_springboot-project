@@ -11,7 +11,7 @@
 - Spring Boot Configuration with ApplicationContext and ConfigurableApplicationContext
 - Annotations (Component, Configuration, Service, Autowired, Bean, Shell[...], Qualifier, Primary, Order, Lazy, 
 PreDestroy, PostConstruct, Value, ConfigurationProperties, EventListener, Async, NonNull, NonNullApi, NonNullFields,
-Nullable, Test)
+Nullable, Test, Scheduled, Cacheable)
 - Spring Shell
 - DI / IoC
 - Konfiguration / Environment / Properties / Profiles
@@ -20,6 +20,9 @@ Nullable, Test)
 - ConversionService / Converter
 - TestDrivenDevelopment
 - JUnit, AssertJ, Mockito (@Test, @ExtendWith, @Mock, @BeforeEach, @Spy, @InjectMocks, @SpringBootTest, @TestPropertySource, @MockitoBean, @MockitoSpyBean)
+- Scheduling (Spring)
+- Proxy / ProxyFactory / MethodInterceptor
+- Caching / KeyGenerator / Caching with Caffeine
 
 ---
 ## Features
@@ -30,7 +33,7 @@ Nullable, Test)
 - get free disk space in root-path
 
 ### AppUuidConfig
-- use proxy to set UUID for the application with bean
+- use proxy via @Configuration to set UUID for the application with bean
 
 ### Shell-Package
 #### PromptProviderConfig
