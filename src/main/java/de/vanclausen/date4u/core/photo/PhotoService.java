@@ -47,7 +47,7 @@ public class PhotoService {
         return download(photo.getName(), fileSystemPath);
     }
 
-    public String upload(byte[] imageBytes) throws IllegalStateException {
+    public String upload(byte[] imageBytes) {
         Future<byte[]> thumbnailBytes = thumbnail.thumbnail(imageBytes);
 
         String imageName = UUID.randomUUID().toString();

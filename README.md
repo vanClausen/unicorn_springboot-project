@@ -23,6 +23,7 @@ Nullable, Test, Scheduled, Cacheable)
 - Scheduling (Spring)
 - Proxy / ProxyFactory / MethodInterceptor
 - Caching / KeyGenerator / Caching with Caffeine
+- Async / Concurrency / (Completable)Future
 
 ---
 ## Features
