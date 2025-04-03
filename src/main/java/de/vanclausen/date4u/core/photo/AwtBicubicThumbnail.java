@@ -6,9 +6,12 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 
 @Service("QualityThumbnail")
 public class AwtBicubicThumbnail implements Thumbnail {
+
     private static BufferedImage create(BufferedImage source, int width, int height) {
         double thumbRatio = (double) width / (double) height;
         double imgRatio = (double) source.getWidth() / (double) source.getHeight();
@@ -27,11 +30,11 @@ public class AwtBicubicThumbnail implements Thumbnail {
     }
 
     @Override
-    public byte[] thumbnail(byte[] imageBytes) {
+    public Future<byte[]> thumbnail(byte[] imageBytes) {
         try (InputStream is = new ByteArrayInputStream(imageBytes);
              ByteArrayOutputStream baos = new ByteArrayOutputStream() ) {
             ImageIO.write( create(ImageIO.read(is), 200, 200), "jpg", baos);
-            return baos.toByteArray();
+            return CompletableFuture.completedFuture(baos.toByteArray());
         } catch(IOException e) {
             throw new UncheckedIOException(e);
         }

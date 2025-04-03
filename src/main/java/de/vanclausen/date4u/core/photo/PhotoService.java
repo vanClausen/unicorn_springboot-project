@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.io.UncheckedIOException;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 @Service
 public class PhotoService {
@@ -45,7 +47,9 @@ public class PhotoService {
         return download(photo.getName(), fileSystemPath);
     }
 
-    public String upload(byte[] imageBytes) {
+    public String upload(byte[] imageBytes) throws IllegalStateException {
+        Future<byte[]> thumbnailBytes = thumbnail.thumbnail(imageBytes);
+
         String imageName = UUID.randomUUID().toString();
 
 //        NewPhotoEvent newPhotoEvent = new NewPhotoEvent(imageName, OffsetDateTime.now());
@@ -55,8 +59,12 @@ public class PhotoService {
         fileSystem.store(imageName + ".jpg", imageBytes, FileSystem.FileSystemPath.IMAGES);
 
         // store thumbnail
-        byte[] thumbnailBytes = thumbnail.thumbnail(imageBytes);
-        fileSystem.store(imageName + "-thumb.jpg", thumbnailBytes, FileSystem.FileSystemPath.THUMBNAILS);
+        try {
+            log.info("start upload");
+            fileSystem.store(imageName + "-thumb.jpg", thumbnailBytes.get(), FileSystem.FileSystemPath.THUMBNAILS);
+        } catch (InterruptedException | ExecutionException e) {
+            throw new IllegalStateException(e);
+        }
 
         return imageName;
     }
