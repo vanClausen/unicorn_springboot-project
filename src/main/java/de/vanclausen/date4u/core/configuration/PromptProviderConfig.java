@@ -1,4 +1,4 @@
-package de.vanclausen.date4u.interfaces.shell;
+package de.vanclausen.date4u.core.configuration;
 
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
