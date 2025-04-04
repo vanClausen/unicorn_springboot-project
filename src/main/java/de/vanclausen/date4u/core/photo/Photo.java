@@ -1,13 +1,18 @@
 package de.vanclausen.date4u.core.photo;
 
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDateTime;
 
 public class Photo {
     public Long id;
-    public Long profile;
-    public String name;
+    @Min(1) public Long profile;
+    @NotNull @Pattern(regexp = "[\\w_-]{1,200}") public String name;
     public boolean isProfilePhoto;
-    public LocalDateTime created;
+    @NotNull @Past public LocalDateTime created;
+
+    public Photo() {
+    }
 
     public Photo(long id, long profile, String name, boolean isProfilePhoto, LocalDateTime created) {
         this.id = id;
@@ -55,5 +60,16 @@ public class Photo {
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
+    }
+
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "id=" + id +
+                ", profile=" + profile +
+                ", name='" + name + '\'' +
+                ", isProfilePhoto=" + isProfilePhoto +
+                ", created=" + created +
+                '}';
     }
 }

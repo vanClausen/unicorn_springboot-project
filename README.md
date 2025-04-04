@@ -11,7 +11,7 @@
 - Spring Boot Configuration with ApplicationContext and ConfigurableApplicationContext
 - Annotations (Component, Configuration, Service, Autowired, Bean, Shell[...], Qualifier, Primary, Order, Lazy, 
 PreDestroy, PostConstruct, Value, ConfigurationProperties, EventListener, Async, NonNull, NonNullApi, NonNullFields,
-Nullable, Test, Scheduled, Cacheable)
+Nullable, Test, Scheduled, Cacheable, Validated, Valid, NotNull, Past, Max(), Min(), Pattern())randomu
 - Spring Shell
 - DI / IoC
 - Konfiguration / Environment / Properties / Profiles
@@ -24,6 +24,8 @@ Nullable, Test, Scheduled, Cacheable)
 - Proxy / ProxyFactory / MethodInterceptor
 - Caching / KeyGenerator / Caching with Caffeine
 - Async / Concurrency / (Completable)Future
+- Validation
+- Retryable / Backoff / Recover / RetryTemplate
 
 ---
 ## Features
